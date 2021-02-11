@@ -1,7 +1,6 @@
 import { IUser } from '../igithub';
 import { OrganizationsService } from './users.service';
 import { Component, OnInit } from '@angular/core';
-import { SSL_OP_NETSCAPE_CA_DN_BUG } from 'constants';
 
 @Component({
   selector: 'app-users',
@@ -23,14 +22,11 @@ export class UsersComponent implements OnInit {
       .then(res => {
         console.log("fetched result: " + JSON.stringify(res));
         let obj: IUser[] = res;
-        for (let i = 0; i < obj.length; i++) {
-          console.log();
-        }
-        this.users = obj;//JSON.stringify(res);
+        this.users = obj;
       })
       .catch(err => {
         console.error(err);
-        alert("ERROR!: " + JSON.stringify( err.status ));
+        alert("ERROR!: " + JSON.stringify(err.status));
       });
 
   }
